@@ -14,4 +14,5 @@ class OrdersController < ApplicationController
 	def destroy
 	end
 end
-before_filter :authenticate_user!
+#before_filter :authenticate_user!
+#new comment
