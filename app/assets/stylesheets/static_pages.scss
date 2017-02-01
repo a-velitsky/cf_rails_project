@@ -1,0 +1,73 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+	color: red;
+	font-weight: bold;
+}
+#nav_container, 
+.navbar-inverse  .navbar-collapse, 
+.navbar-inverse .navbar-form {
+    background-color: #cc0c0c;
+ }
+
+ .navbar-inverse .navbar-nav>li>a {
+    color: #ffffff;
+}
+
+ .navbar-brand a{
+ 	text-transform: uppercase;
+ 	color: white;
+ }
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+    color: #d01717;
+    background-color: white;
+}
+
+ body {
+ 	padding-top: 40px;
+ }
+
+
+h2 {
+  text-align: Center;
+  padding: 5px 5px 5px 15px;
+  font-size: 30px;
+  margin: -7px;
+  margin-bottom: 0;
+  color: red;
+}
+
+#featured_product_display {
+	padding: 0 24%;
+}
+
+#featured_product_display h2 {
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 30px;
+    margin: 20px;
+    margin-bottom: 0;
+    background-color: rgba(255, 0, 0, 0.31);
+    color: white;
+    position: absolute;
+    top: 17pc;
+    right: 45pc;
+}
+
+#featured_caption {
+	background-color: red;
+	color: white;
+}
+#product_carousel {
+    width: 60pc;
+    padding: 0px 0pc;
+ }
+
+.carousel-caption {
+
+    bottom: 30px;
+    
+}
