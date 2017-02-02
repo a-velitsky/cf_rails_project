@@ -1,3 +1,17 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.authentication-form {
+	background-image: image-url('cycler.png');
+  height: 21pc;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 16pc;
+}
+.authentication-header {
+    text-decoration: underline;
+    margin-right: 50pc;
+    padding-bottom: 30px;
+    font-weight: bolder;
+}
