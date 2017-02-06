@@ -77,6 +77,28 @@ div {
 label {
   display: block;
 }
+
 #scafold_product_title {
     font-size: 4em;
+    left: 22%;
+    width: 30pc;
+    height: 5pc;
+    padding: 7px 0;
+    position: relative;
+}
+
+#scafold_back_layer {
+    padding: 0% 30%;
+    top: 61.5%;
+    background-color: transparent;
+    z-index: -1;
+    border-top: 43px solid #cc8585;
+    border-right: 58px solid;
+    left: 23.6%;
+    width: 66%;
+
+}
+
+#product_image {
+  width: 750px;
 }
