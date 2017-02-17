@@ -9,7 +9,8 @@ class CommentsController < ApplicationController
         format.html { redirect_to @product, notice: 'Review was created successfully.' }
         format.json { render :show, status: :created, location: @product }
       else
-        format.html { redirect_to @product, alert: 'Review was not saved successfully.' }
+      	messages = @comment.errors.messages.values.to_s.tr('[]"', '').tr(',','')
+        format.html { redirect_to @product, alert: messages}
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
