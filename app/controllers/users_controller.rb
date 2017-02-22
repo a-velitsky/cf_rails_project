@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
  
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  #before_filter :authenticate_user!, :except => [:show, :index]
   before_action :authenticate_user!, :except => [:index]
-  before_action :check_user, :except => [:edit, :update, :destroy, :index]
   load_and_authorize_resource
 
   # GET /users
@@ -15,6 +13,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    #Work around for authenticate_user! now restricting access to show page for logged in users 
+    if current_user != @user
+      redirect_to root_url, alert: "You are not authorized to access this page."
+    end
   end
 
   # GET /users/new
@@ -75,11 +77,5 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name)
-    end
-
-    def check_user
-      if current_user != @user
-        redirect_to root_url, alert: "Sorry, This Profile belongs to someone else !"
-      end
     end
 end
