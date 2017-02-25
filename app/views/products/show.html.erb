@@ -20,6 +20,9 @@
 			<%= @product.colour %>
 			<p>Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div> </p>
 		</p>
+		<%= form_tag "/payments/create" do %>
+  		<%= render partial: "shared/stripe_checkout_button" %>
+		<% end %>
 		<%= render partial: "new_comment" %>
 		<%= render partial: "comments" %>
 		<%= will_paginate @comments %>
@@ -28,3 +31,4 @@
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+
