@@ -22,7 +22,10 @@
 		</p>
 		<%= form_tag "/payments/create" do %>
   		<%= render partial: "shared/stripe_checkout_button" %>
+<<<<<<< HEAD
   		<%= hidden_field_tag(:product_id, @product.id) %>
+=======
+>>>>>>> ea41334df829e369e81586d769dcfea093e68f8b
 		<% end %>
 		<%= render partial: "new_comment" %>
 		<%= render partial: "comments" %>
