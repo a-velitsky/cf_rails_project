@@ -4,7 +4,7 @@
     <a><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></a>
     <h2 class="product-title"><%= product.name %></h2>
     <h2 class="product-title back-layer"></h2>
-    <%=image_tag(product.image_url, class: "img-responsive", id: "product_image") %>
+    <%=image_tag(product.image_url, class: "img-responsive img-zoom", id: "product_image", data_zoom_image: product.image_url) %>
     <p><strong>Description:</strong><%= product.description %>
     <br>
     <br>

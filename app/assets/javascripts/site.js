@@ -7,3 +7,11 @@ $(document).on('turbolinks:load', function(){
       }
     });
 });
+
+$(document).on('turbolinks:load', function(){
+      $('.img-zoom').elevateZoom({
+      	tint:true, 
+      	tintColour:'#ff2e00', 
+      	tintOpacity:0.5  
+ 	  });
+ }); 
