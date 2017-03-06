@@ -62,3 +62,4 @@ gem 'rails-controller-testing'
 gem 'stripe'
 gem "recaptcha", require: "recaptcha/rails"
 gem "brakeman", :require => false
+gem 'dalli'
