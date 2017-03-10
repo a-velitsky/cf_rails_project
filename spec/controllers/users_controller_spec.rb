@@ -12,6 +12,7 @@ describe UsersController, :type => :controller do
 		
 		context 'User is logged' do
 			before do
+				@user.confirm
 				sign_in @user
 			end
 
