@@ -21,6 +21,12 @@
 				<%= @product.colour %>
 				<p>Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div> </p>
 			</p>
+			<h6>  
+  			Views:
+  			<span class="badge">
+    			<%= @product.views %>
+  			</span>
+			</h6>  
 			<%= form_tag "/payments/create" do %>
   			<%= render partial: "shared/stripe_checkout_button" %>
   			<%= hidden_field_tag(:product_id, @product.id) %>
