@@ -12,7 +12,7 @@ class Product < ApplicationRecord
 	end
 
 	def views
-		$redis.inc("product:#{id}")
+		$redis.get("product:#{id}")
 	end
 
 	def viewed!
