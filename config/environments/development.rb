@@ -54,4 +54,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   default_url_options
   config.app_generators.javascript_engine = :javascript
+ # config.assets.prefix = "/dev-assets"
 end

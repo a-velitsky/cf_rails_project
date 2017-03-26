@@ -10,7 +10,8 @@ module ApplicationCable
 
   	end
 
-  	protected 
+  	protected
+  	
   	def find_verified_user
   		if verfied_user = request.env['warden'].user
   			verfied_user
