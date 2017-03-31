@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :validate_admin, except: [:show, :index]
 
   # GET /products
   # GET /products.json
@@ -83,5 +84,13 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :description, :image_url, :colour, :price)
+    end
+
+    def validate_admin
+      if signed_in?
+          redirect_to root_path, alert: "You are not authorized to access this page." unless current_user.admin?
+      else
+        redirect_to root_path, alert: "You are not authorized to access this page."
+      end
     end
 end
