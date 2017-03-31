@@ -75,7 +75,7 @@ describe ProductsController, type: :controller do
 		end
 	end
 
-	describe "Update product" do
+	describe "Edit product" do
 		before do
 			@product = FactoryGirl.create(:product)
 			@product2 = FactoryGirl.create(:product)
@@ -84,7 +84,7 @@ describe ProductsController, type: :controller do
 		context "using guest user" do
 			
 			it "does not update" do
-				get :edit, params: {id: @product.id}
+				post :edit, params: { id: @product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
 				expect(response).to have_http_status(302)
 				expect(response).to redirect_to(root_path)
 				expect(flash[:alert]).to match(/You are not authorized to access this page./)
@@ -97,7 +97,7 @@ describe ProductsController, type: :controller do
 			end
 
 			it "does not update" do
-				get :edit, params: {id: @product.id}
+				post :edit, params: { id: @product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
 				expect(response).to have_http_status(302)
 				expect(response).to redirect_to(root_path)
 				expect(flash[:alert]).to match(/You are not authorized to access this page./)
@@ -110,7 +110,7 @@ describe ProductsController, type: :controller do
 			end
 			
 			it "updates product" do
-				get :edit, params: {id: @product.id}
+				post :edit, params: { id: @product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
         expect(response).to have_http_status(200)
         expect(response).to render_template :edit
 				#patch :update, params: {id: @product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
