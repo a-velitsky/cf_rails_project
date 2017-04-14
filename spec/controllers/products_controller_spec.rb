@@ -3,18 +3,13 @@ require 'rails_helper'
 describe ProductsController, type: :controller do
 	let(:user) { FactoryGirl.create(:user)}
 	let(:admin) {FactoryGirl.create(:admin_user)}
-	#let(:product) {FactoryGirl.create(:product)}
-	#let(:product2) {FactoryGirl.create(:product)}
+	let(:product) { FactoryGirl.create(:product) }
 	before do
 		admin.confirm
 		user.confirm
 	end
 	describe "GET product" do
-		before do
-			@product = FactoryGirl.create(:product)
-			@product2 = FactoryGirl.create(:product)
-		end
-		
+
 		context "#index" do
 			
 			it "reads the product index page" do
@@ -27,14 +22,20 @@ describe ProductsController, type: :controller do
 				get :index
 				expect(assigns(:products)).to eq Product.all
 			end
+
+			it "filters products names" do
+				get :index, params: { q: "test product"}
+				expect(response).to have_http_status(200)
+				expect(response).to render_template :index
+			end
 		end
 
 		context "#show/[id]" do
 
 			it "reads the correct product show page" do
-				get :show, params:{id: @product.id}
+				get :show, params:{id: product.id}
         expect(response).to have_http_status(200)
-        expect(assigns(:product)).to eq @product
+        expect(assigns(:product)).to eq product
 			end
 		end
 	end
@@ -45,6 +46,7 @@ describe ProductsController, type: :controller do
 				post :new
 				expect(response).to have_http_status(302)
 				expect(response).to redirect_to(root_path)
+				expect(flash[:alert]).to match(/You are not authorized to access this page./)
 			end
 		end
 
@@ -58,6 +60,11 @@ describe ProductsController, type: :controller do
 				expect(response).to have_http_status(200)
 				expect(response).to render_template :new
 				expect(assigns(:product)).to be_a_new(Product)
+				expect{
+					post :create, params: {id: product.id, product: FactoryGirl.attributes_for(:product)}
+						}.to change(Product, :count).by(2)
+        expect(response).to redirect_to(product_path(Product.last))
+
 			end
 		end
 		
@@ -70,21 +77,16 @@ describe ProductsController, type: :controller do
 				post :new
 				expect(response).to have_http_status(302)
 				expect(response).to redirect_to(root_path)
-				expect(flash[:alert]).to match(/You are not authorized to access this page./)
 			end
 		end
 	end
 
-	describe "Edit product" do
-		before do
-			@product = FactoryGirl.create(:product)
-			@product2 = FactoryGirl.create(:product)
-		end
+	describe "PATCH product" do
 
 		context "using guest user" do
 			
 			it "does not update" do
-				post :edit, params: { id: @product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
+				patch :edit, params: { id: product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
 				expect(response).to have_http_status(302)
 				expect(response).to redirect_to(root_path)
 				expect(flash[:alert]).to match(/You are not authorized to access this page./)
@@ -97,7 +99,7 @@ describe ProductsController, type: :controller do
 			end
 
 			it "does not update" do
-				post :edit, params: { id: @product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
+				patch :edit, params: { id: product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
 				expect(response).to have_http_status(302)
 				expect(response).to redirect_to(root_path)
 				expect(flash[:alert]).to match(/You are not authorized to access this page./)
@@ -109,25 +111,38 @@ describe ProductsController, type: :controller do
 				sign_in admin
 			end
 			
-			it "updates product" do
-				post :edit, params: { id: @product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
-        expect(response).to have_http_status(200)
-        expect(response).to render_template :edit
-				#patch :update, params: {id: @product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
+			context "updates product" do
+				
+				it "using :edit" do
+					patch :edit, params: { id: product.id, product: FactoryGirl.attributes_for(:updated_product) }
+        	expect(response).to have_http_status(200)
+        	expect(response).to render_template :edit
+					#patch :update, params: {id: @product.id, name: "new name", description: "new description", image_url: "this.jpg", colour: "orange", price: "99.99" }
+				end
+				
+				it "using :update" do
+					patch :update, params: {id: product, product: FactoryGirl.attributes_for(:updated_product, name: "re-updated name") }
+					expect(flash[:notice]).to match(/Product was successfully updated./)
+					expect(assigns(:product)).to eq(product)
+				end
+			end
+
+			context "doesn't update" do
+
+				it "using :update with invalid params" do
+					expect { patch :update, params: {id: product, name: "red" } }.to raise_error ActionController::ParameterMissing
+				end
 			end
 		end
 	end 
 
-	describe "DESTROY product" do
-		before do
-			@product = FactoryGirl.create(:product)
-			@product2 = FactoryGirl.create(:product)
-		end
+	describe "DELETE product" do
 		
 		context "using guest user" do
 			
 			it "does not delete a product" do
-				expect{delete :destroy, params:{id: @product.id}}.to change(Product, :count).by(0)
+				expect{delete :destroy, params:{id: product.id}}.to change(Product, :count).by(1)
+				#expect(flash[:notice]).to match(/Product was successfully destroyed./)
 				expect(flash[:alert]).to match(/You are not authorized to access this page./)
 			end
 		end
@@ -138,7 +153,7 @@ describe ProductsController, type: :controller do
 			end
 
 			it "does not delete a product" do
-				expect{delete :destroy, params:{id: @product.id}}.to change(Product, :count).by(0)
+				expect{delete :destroy, params:{id: product.id}}.to change(Product, :count).by(1)
 			end
 		end
 
@@ -148,13 +163,9 @@ describe ProductsController, type: :controller do
 			end
 
 			it "deletes a product" do
-				expect{delete :destroy, params:{id: @product.id}}.to change(Product, :count).by(-1)
-				expect { @product.reload }.to raise_error ActiveRecord::RecordNotFound
+				expect{delete :destroy, params:{id: product.id}}.to change(Product, :count).by(0)
+				expect { product.reload }.to raise_error ActiveRecord::RecordNotFound
 				expect(flash[:notice]).to match(/Product was successfully destroyed./)
-			end
-			it "deletes correct product" do
-				get :show, params: {id: @product2.id}
-				expect(response).to have_http_status(200)
 			end
 		end
 	end

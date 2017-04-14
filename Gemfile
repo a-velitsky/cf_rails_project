@@ -64,3 +64,7 @@ gem "recaptcha", require: "recaptcha/rails"
 gem "brakeman", :require => false
 gem 'dalli'
 gem 'redis-rails'
+
+group :test do
+  gem 'simplecov', :require => false
+end

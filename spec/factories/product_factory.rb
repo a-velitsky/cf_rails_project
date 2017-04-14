@@ -17,7 +17,7 @@ FactoryGirl.define do
     name "updated name"
     description "updated description"
     image_url "sig_fixie.jpg"
-    price "99.99"
+    price "999.99"
     colour "green"
   end
 end

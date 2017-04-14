@@ -13,10 +13,9 @@
       <body>
         <% if notice %>
           <p id="notice" class="alert alert-info"><%= notice %></p>
-        <% end %>
-        <% if alert %>
+        <% elsif alert %>
           <p id="alert" class="alert alert-danger"><%= alert %></p>
-        <% end %>
+         <% end %>
         <nav class="navbar navbar-inverse navbar-fixed-top" roles="navigation">
           <div class="container-fluid" id="nav_container">
             <div class="navbar-brand">

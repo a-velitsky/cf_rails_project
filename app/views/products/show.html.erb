@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class = "row" data-product-id="<%= @product.id %>">
-	<% cache @product do %>
+		<% cache @product do %>
 		<div class="col-xs-12 col-md-6">
   		<%=image_tag(@product.image_url, class: "img-responsive detail img-zoom", data_zoom_image: "@product.image_url_large", id: "product_image") %>
 		</div>
@@ -8,19 +8,16 @@
 			<h2 class="product-title" id="scafold_product_title">
   		<%= @product.name %>
 			</h2>
-			<p>
-  			<strong>Description:</strong>
-  			<%= @product.description %>
-  			<br>
-				<br>
-				<strong>Price:</strong>
-				<span class="glyphicons glyphicons-usd"></span><%= @product.price %>
-				<br>
-				<br>
-				<strong>Colour:</strong>
-				<%= @product.colour %>
-				<p>Average Rating: <div class="rated" id= "average-rating" data-score="<%= @product.average_rating %>"></div> </p>
-			</p>
+  		<strong>Description:</strong>
+  		<%= @product.description %>
+  		<br>
+			<br>
+			<strong>Price:</strong>
+			<span class="glyphicons glyphicons-usd"></span><%= @product.price %>
+			<br>
+			<br>
+			<strong>Colour:</strong>
+			<%= @product.colour %>
 			<h6>  
   			Views:
   			<span class="badge">
