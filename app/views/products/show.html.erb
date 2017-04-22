@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 <div class = "row" data-product-id="<%= @product.id %>">
+	  <% if current_user && current_user.admin? %>
+      <span class="button"><%= link_to 'Edit', edit_product_path(product) %></span>
+      <span class="button"><%= link_to 'Delete', product, method: :delete, data: {confirm: 'Are you sure?' } %></span>
+    <% else %>
+      <a></a>
+    <% end %>
 		<% cache @product do %>
 		<div class="col-xs-12 col-md-6">
   		<%=image_tag(@product.image_url, class: "img-responsive detail img-zoom", data_zoom_image: "@product.image_url_large", id: "product_image") %>
@@ -8,7 +14,7 @@
 			<h2 class="product-title" id="scafold_product_title">
   		<%= @product.name %>
 			</h2>
-  		<strong>Description:</strong>
+  		<p><strong>Description:</strong>
   		<%= @product.description %>
   		<br>
 			<br>
@@ -16,7 +22,7 @@
 			<span class="glyphicons glyphicons-usd"></span><%= @product.price %>
 			<br>
 			<br>
-			<strong>Colour:</strong>
+			<strong>Colour:</strong></p>
 			<%= @product.colour %>
 			<h6>  
   			Views:
