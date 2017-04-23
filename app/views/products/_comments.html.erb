@@ -1,6 +1,6 @@
 <p>Average Rating: <div class="rated" id= "average-rating" data-score="<%= @product.average_rating %>"></div> </p>
 <div class="product-reviews">
-    <% @comments.each do |comment| %>
-        <%= render comment %>
-    <% end %>
+  <% @comments.each do |comment| %>
+    <%= render comment %>
+  <% end %>
 </div>

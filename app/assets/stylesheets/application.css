@@ -30,3 +30,6 @@
 #search_field:-ms-input-placeholder {  
    color: red;  
 }
+.item {
+    max-height: 620px;
+}

@@ -1,193 +1,58 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .product-title {
-    text-align: center;
-    font-weight: bold;
-    padding: 2% 0;
-    font-size: 1.2em;
-    height: 9%;
-    width: 88%;
-    /* margin: 0px 4%; */
-    background-color: rgba(255, 0, 0, 0.79);
-    color: white;
-    position: absolute;
-    right: 0%;
-    top: 39.5%;
+  text-align: center;
+  font-weight: bold;
+  padding: 1% 0;
+  font-size: 1.2em;
+  height: 9%;
+  width: 88%;
+  /* margin: 0px 4%; */
+  background-color: rgba(255, 0, 0, 0.79);
+  color: white;
+  position: absolute;
+  right: 0%;
+  top: 29.5%;
 }
 
 .back-layer {
-    padding: 0% 30%;
-    top: 48.5%;
-    background-color: transparent;
-    z-index: -1;
-    border-top: 25px solid #cc8585;
-    border-right: 22px solid;
-    left: 37.6%;
-    width: 66%;
+  padding: 0% 30%;
+  top: 38.5%;
+  background-color: transparent;
+  z-index: -1;
+  border-top: 25px solid #cc8585;
+  border-right: 22px solid;
+  left: 37.6%;
+  width: 66%;
 }
 
 h1 {
- 	text-align: center;
+  text-align: center;
 }
 
 .product-form {
-    width: 40%;
+  width: 40%;
 }
 
-.product_image {
-  width: 750px;
-}
-
-
-@media screen and (max-width: 768px){
-    .product-title {
-        text-align: center;
-        font-weight: bold;
-        padding: 1% 0;
-        font-size: 1.2em;
-        height: 7%;
-        width: 88%;
-        /* margin: 0px 4%; */
-        background-color: rgba(255, 0, 0, 0.79);
-        color: white;
-        position: absolute;
-        right: 0%;
-        top: 34.6%;
-    }
-
-/* line 20, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-    .back-layer {
-        padding: 0% 30%;
-        top: 41.6%;
-        background-color: transparent;
-        z-index: -1;
-        border-top: 26px solid #cc8585;
-        border-right: 22px solid;
-        left: 36.6%;
-        width: 66%;
-    }
-
-        /* line 31, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-    h1 {
-        text-align: center;
-    }
-
-    /* line 35, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-    .product-form {
-        width: 40%;
-    }
-
-    /* line 39, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-    .product_image {
-        width: 750px;
-    }
+.product-image {
+  width: 100%;
+  max-height: 190px;
 }
 
 @media screen and (max-width: 600px) {
-  /* line 45, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  .product-title {
-    text-align: center;
-    font-weight: bold;
-    padding: 1% 0;
-    font-size: 1.2em;
-    height: 7%;
-    width: 101%;
-    /* margin: 0px 4%; */
-    background-color: rgba(255, 0, 0, 0.79);
-    color: white;
+ .product-title {
+    width: 103%;
     position: relative;
-    right: -2.2%;
-    top: 34.6%;
+    left: 2%;
   }
 
-  /* line 20, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  /* line 61, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
   .back-layer {
     display: none;
-    padding: 0% 30%;
-    top: 10%;
-    background-color: transparent;
-    z-index: -1;
-    border-top: 22px solid #cc8585;
-    border-right: 22px solid;
-    left: 36.6%;
-    width: 66%;
-    position: absolute
-  }
-
-  /* line 31, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  /* line 73, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  h1 {
-    text-align: center;
-  }
-
-  /* line 35, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  /* line 78, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  .product-form {
-    width: 40%;
-  }
-
-  /* line 39, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  /* line 83, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  .product_image {
-    width: 750px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  /* line 45, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  .product-title {
-    text-align: center;
+.product-title {
     font-weight: 500;
     padding: 0 0;
-    font-size: 1.2em;
-    height: 7%;
-    width: 101%;
-    /* margin: 0px 4%; */
-    background-color: rgba(255, 0, 0, 0.79);
-    color: white;
-    position: relative;
-    right: -4%;
-
-  }
-
-  /* line 20, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  /* line 61, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  .back-layer {
-    display: none;
-    padding: 0% 30%;
-    top: 10%;
-    background-color: transparent;
-    z-index: -1;
-    border-top: 22px solid #cc8585;
-    border-right: 22px solid;
-    left: 36.6%;
-    width: 66%;
-    position: absolute
-  }
-
-  /* line 31, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  /* line 73, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  h1 {
-    text-align: center;
-  }
-
-  /* line 35, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  /* line 78, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  .product-form {
-    width: 40%;
-  }
-
-  /* line 39, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  /* line 83, F:/sites/cfrailsproject/app/assets/stylesheets/products.scss */
-  .product_image {
-    width: 750px;
-  }
-  .desc {
-    display:none;
+    left: 4%;
   }
 }
-
-

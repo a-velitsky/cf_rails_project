@@ -13,7 +13,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
   	<% @products.each do |product| %>
-    	 <%= render partial: "product_preview", locals: {product: product} %>
+    	<%= render partial: "product_preview", locals: {product: product} %>
     <% end %>
    </div>
   <!-- Controls -->

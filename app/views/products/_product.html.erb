@@ -1,28 +1,14 @@
 <div class="col-xs-6 col-md-4">
-    <div class="index-links">
-    <% if current_user && current_user.admin? %>
-      <span class="button"><%= link_to 'Edit', edit_product_path(product) %></span>
-      <span class="button"><%= link_to 'Delete', product, method: :delete, data: {confirm: 'Are you sure?' } %></span>
-    <% end %>
-  </div>
 <% cache product do %>
-  
-   
-    <h2 class="product-title"><%= product.name %></h2>
-    <h2 class="product-title back-layer"></h2>
-    <a href="<%= product_path(product) %>">
-    <%=image_tag(product.image_url, class: "img-responsive product-image") %></a>
-    <p>
-      <span class="desc"><strong>Description:</strong><%= product.description %></span>
-      <br>
-      <br>
-      <strong>Price: </strong><%= product.price %>
-      <br>
-      <br>
-      <strong>Colour:</strong><%= product.colour %>
-    </p>
-
-  
+  <h2 class="product-title"><%= product.name %></h2>
+  <h2 class="product-title back-layer"></h2>
+  <a href="<%= product_path(product) %>">
+  <%=image_tag(product.image_url, class: "img-responsive product-image") %></a>
+  <p>
+    <strong>Price: </strong><br><%= product.price %>
+    <br>
+    <br>
+    <strong>Colour: </strong><br><%= product.colour %>
+  </p>
 <% end %>
-
 </div>

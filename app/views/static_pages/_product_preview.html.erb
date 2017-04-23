@@ -1,7 +1,7 @@
 <div class="item<%= " active" if product == @products.first %>">
-      	<%= image_tag(product.image_url) %>
-      	<div class="carousel-caption">
-        	<h1><%= product.name %> <br><em id = "featured_caption"><%= "Featured Product" if @featured_product.name == product.name %></em></h1>
-        	<h3>$<%= product.price %></h3>
-      	</div>
-    	</div>
+  <%= image_tag(product.image_url) %>
+  <div class="carousel-caption">
+    <h1><%= product.name %> <br><em id = "featured_caption"><%= "Featured Product" if @featured_product.name == product.name %></em></h1>
+    <h3>$<%= product.price %></h3>
+  </div>
+</div>

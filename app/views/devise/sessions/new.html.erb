@@ -1,16 +1,13 @@
 <h2 class="authentication-header">Log in</h2>
 <div class = "container authentication-form">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class= "row">
-  <div class="field col-md-2">
-    <%= f.label :email%><br />
+  <div>
+    <%= f.label :email%>
     <%= f.email_field :email, autofocus: true%>
   </div>
-
-  <div class="field col-md-2">
-    <%= f.label :password %><br />
+  <div>
+    <%= f.label :password %>
     <%= f.password_field :password, autocomplete: "off"%>
-  </div>
   </div>
   <div class="actions">
     <%= f.submit "Log in" %>

@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
       search_term = params[:q]
       #return our filtered list here
       if (Rails.env == "production")
-           @products = Product.where("name ilike ?", "%#{search_term}%")
+        @products = Product.where("name ilike ?", "%#{search_term}%")
       else
         @products = Product.where("name LIKE ?", "%#{search_term}%")
       end
@@ -88,7 +88,7 @@ class ProductsController < ApplicationController
 
     def validate_admin
       if signed_in?
-          redirect_to root_path, alert: "You are not authorized to access this page." unless current_user.admin?
+        redirect_to root_path, alert: "You are not authorized to access this page." unless current_user.admin?
       else
         redirect_to root_path, alert: "You are not authorized to access this page."
       end
